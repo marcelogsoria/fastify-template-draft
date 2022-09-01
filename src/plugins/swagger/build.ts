@@ -6,8 +6,11 @@ const start = async () => {
   try {
     await server.ready();
     !fs.existsSync(dir) && fs.mkdirSync(dir);
-    //fs.writeFileSync(`${dir}/swagger.yml`, server.swagger({ yaml: true })); //TODO: Guardar en el fs
-    console.log(server.swagger());
+    fs.writeFileSync(
+      `${dir}/swagger.json`,
+      JSON.stringify(server.swagger(), null, 2)
+    );
+    console.log(JSON.stringify(server.swagger()));
     server.log.info(`Documentation saved to ${dir}/swagger.yml`);
     process.exit();
   } catch (err) {

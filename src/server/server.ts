@@ -6,7 +6,7 @@ const Server = async (): Promise<FastifyInstance> => {
 
   await server.register(swagger);
 
-  server.get("/ping", async (_request, _reply) => {
+  server.get("/ping", async (_request: any, _reply: any) => {
     return "pong\n";
   });
   server.put(
@@ -14,7 +14,7 @@ const Server = async (): Promise<FastifyInstance> => {
     {
       schema: {
         description: "post some data",
-        tags: ["user", "code"],
+        tags: ["user"],
         summary: "qwerty",
         params: {
           type: "object",
@@ -60,7 +60,7 @@ const Server = async (): Promise<FastifyInstance> => {
         ],
       },
     },
-    (_req, _reply) => {}
+    (_req: any, _reply: any) => {}
   );
   return server;
 };
