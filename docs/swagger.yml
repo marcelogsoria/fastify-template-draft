@@ -1,0 +1,63 @@
+swagger: '2.0'
+info:
+  title: Test swagger
+  description: testing the fastify swagger api
+  version: 0.1.0
+definitions: {}
+paths:
+  /some-route/{id}:
+    put:
+      summary: qwerty
+      description: post some data
+      tags:
+        - user
+        - code
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hello:
+                type: string
+              obj:
+                type: object
+                properties:
+                  some:
+                    type: string
+        - type: string
+          description: user id
+          required: true
+          in: path
+          name: id
+      security:
+        - apiKey: []
+      responses:
+        '201':
+          description: Successful response
+          schema:
+            description: Successful response
+            type: object
+            properties:
+              hello:
+                type: string
+        default:
+          description: Default response
+          schema:
+            description: Default response
+            type: object
+            properties:
+              foo:
+                type: string
+host: localhost:3000
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  apiKey:
+    type: apiKey
+    name: apiKey
+    in: header
