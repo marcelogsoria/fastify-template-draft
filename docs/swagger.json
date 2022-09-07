@@ -7,12 +7,94 @@
   },
   "definitions": {},
   "paths": {
-    "/some-route/{id}": {
-      "put": {
-        "summary": "qwerty",
-        "description": "post some data",
+    "/informes/{id}": {
+      "get": {
+        "description": "Get Informe por id",
         "tags": [
-          "user"
+          "Informes"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "required": true,
+            "in": "path",
+            "name": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "schema": {
+              "type": "object",
+              "required": [
+                "lineanegocio",
+                "vehiculo_nombre",
+                "marca_vehiculo"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "examples": [
+                    1
+                  ]
+                },
+                "lineanegocio": {
+                  "type": "string",
+                  "examples": [
+                    "I"
+                  ]
+                },
+                "vehiculo_nombre": {
+                  "type": "string",
+                  "examples": [
+                    "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)"
+                  ]
+                },
+                "marca_vehiculo": {
+                  "type": "string",
+                  "examples": [
+                    "PEUGEOT"
+                  ]
+                }
+              },
+              "examples": [
+                {
+                  "lineanegocio": "I",
+                  "vehiculo_nombre": "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
+                  "marca_vehiculo": "PEUGEOT"
+                },
+                {
+                  "id": "asoidjoaisjda",
+                  "lineanegocio": "I",
+                  "vehiculo_nombre": "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
+                  "marca_vehiculo": "PEUGEOT"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Default Response",
+            "schema": {
+              "type": "object",
+              "required": [
+                "error"
+              ],
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    "/informes/": {
+      "post": {
+        "description": "Crea un nuevo informe",
+        "tags": [
+          "Informes"
         ],
         "parameters": [
           {
@@ -20,57 +102,117 @@
             "in": "body",
             "schema": {
               "type": "object",
+              "required": [
+                "lineanegocio",
+                "vehiculo_nombre",
+                "marca_vehiculo"
+              ],
               "properties": {
-                "hello": {
-                  "type": "string"
+                "id": {
+                  "type": "string",
+                  "examples": [
+                    1
+                  ]
                 },
-                "obj": {
-                  "type": "object",
-                  "properties": {
-                    "some": {
-                      "type": "string"
-                    }
-                  }
+                "lineanegocio": {
+                  "type": "string",
+                  "examples": [
+                    "I"
+                  ]
+                },
+                "vehiculo_nombre": {
+                  "type": "string",
+                  "examples": [
+                    "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)"
+                  ]
+                },
+                "marca_vehiculo": {
+                  "type": "string",
+                  "examples": [
+                    "PEUGEOT"
+                  ]
                 }
-              }
+              },
+              "examples": [
+                {
+                  "lineanegocio": "I",
+                  "vehiculo_nombre": "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
+                  "marca_vehiculo": "PEUGEOT"
+                },
+                {
+                  "id": "asoidjoaisjda",
+                  "lineanegocio": "I",
+                  "vehiculo_nombre": "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
+                  "marca_vehiculo": "PEUGEOT"
+                }
+              ]
             }
-          },
-          {
-            "type": "string",
-            "description": "user id",
-            "required": true,
-            "in": "path",
-            "name": "id"
-          }
-        ],
-        "security": [
-          {
-            "apiKey": []
           }
         ],
         "responses": {
           "201": {
-            "description": "Successful response",
+            "description": "Default Response",
             "schema": {
-              "description": "Successful response",
               "type": "object",
+              "required": [
+                "lineanegocio",
+                "vehiculo_nombre",
+                "marca_vehiculo"
+              ],
               "properties": {
-                "hello": {
-                  "type": "string"
+                "id": {
+                  "type": "string",
+                  "examples": [
+                    1
+                  ]
+                },
+                "lineanegocio": {
+                  "type": "string",
+                  "examples": [
+                    "I"
+                  ]
+                },
+                "vehiculo_nombre": {
+                  "type": "string",
+                  "examples": [
+                    "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)"
+                  ]
+                },
+                "marca_vehiculo": {
+                  "type": "string",
+                  "examples": [
+                    "PEUGEOT"
+                  ]
                 }
-              }
+              },
+              "examples": [
+                {
+                  "lineanegocio": "I",
+                  "vehiculo_nombre": "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
+                  "marca_vehiculo": "PEUGEOT"
+                },
+                {
+                  "id": "asoidjoaisjda",
+                  "lineanegocio": "I",
+                  "vehiculo_nombre": "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
+                  "marca_vehiculo": "PEUGEOT"
+                }
+              ]
             }
           },
-          "default": {
-            "description": "Default response",
+          "400": {
+            "description": "Default Response",
             "schema": {
-              "description": "Default response",
               "type": "object",
+              "required": [
+                "error"
+              ],
               "properties": {
-                "foo": {
+                "error": {
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             }
           }
         }

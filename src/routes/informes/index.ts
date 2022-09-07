@@ -1,0 +1,1 @@
+export { informesRoutes } from "./informes";

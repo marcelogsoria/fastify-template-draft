@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build-swagger": "node dist/plugins/swagger/build.js",
     "build": "tsc -p tsconfig.json",
     "watch": "tsc -w -p tsconfig.json",
     "start": "nodemon dist/index.js",
-    "swagger": "npm run build-swagger && redoc-cli bundle docs/swagger.json --output docs/data-api.html"
+    "swagger": "npm run build-swagger && redoc-cli build docs/swagger.json --output docs/data-api.html"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,12 @@
     "nodemon": "^2.0.19"
   },
   "devDependencies": {
+    "@types/jest": "^29.0.0",
     "@types/node": "^18.7.14",
+    "jest": "^28.1.3",
+    "json-schema-to-ts": "^2.5.5",
     "redoc-cli": "^0.13.17",
+    "ts-jest": "^28.0.8",
     "typescript": "^4.8.2"
   }
 }

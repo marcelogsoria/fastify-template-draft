@@ -10,7 +10,6 @@ const start = async () => {
       `${dir}/swagger.json`,
       JSON.stringify(server.swagger(), null, 2)
     );
-    console.log(JSON.stringify(server.swagger()));
     server.log.info(`Documentation saved to ${dir}/swagger.yml`);
     process.exit();
   } catch (err) {
