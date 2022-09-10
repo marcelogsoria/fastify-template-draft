@@ -4,17 +4,16 @@ import type {
   GetInformePorIdParams,
   Informe,
 } from "../../schemas/informes/types";
-import { informes } from "./__fixtures__/informes";
+const InformeModel = require("../../models/InformeModel");
 
 export const getInformePorIdHandler: RouteHandler<{
   Params: GetInformePorIdParams;
   Reply: Informe | ApiError;
 }> = async function (req, reply) {
-  const { id } = req.params;
-  const informeEncontrado = informes.find((p) => p.id === id);
-
-  if (informeEncontrado) {
-    reply.send(informeEncontrado);
+  const informe = await InformeModel.findById(req.params.id);
+  console.log(informe);
+  if (informe) {
+    reply.send(informe);
   } else {
     reply.code(404).send({ error: "No se encontró el Informe" });
   }
@@ -24,11 +23,12 @@ export const crearInformeHandler: RouteHandler<{
   Body: Informe;
   Reply: Informe | ApiError;
 }> = async function (req, reply) {
-  const nuevoInforme = req.body;
-  const informeCreado = { ...nuevoInforme, id: "123123123" };
+  const informe = new InformeModel(req.body);
 
-  if (informeCreado) {
-    reply.send(informeCreado);
+  await informe.save();
+
+  if (informe) {
+    reply.send(informe);
   } else {
     reply.code(400).send({ error: "Error durante la creación del informe." });
   }

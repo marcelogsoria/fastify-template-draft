@@ -4,36 +4,19 @@ export const informeSchema = {
   type: "object",
   required: ["lineanegocio", "vehiculo_nombre", "marca_vehiculo"],
   properties: {
-    id: {
+    _id: {
       type: "string",
-      examples: [1],
     },
     lineanegocio: {
       type: "string",
-      examples: ["I"],
     },
     vehiculo_nombre: {
       type: "string",
-      examples: ["PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)"],
     },
     marca_vehiculo: {
       type: "string",
-      examples: ["PEUGEOT"],
     },
-  },
-  examples: [
-    {
-      lineanegocio: "I",
-      vehiculo_nombre: "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
-      marca_vehiculo: "PEUGEOT",
-    },
-    {
-      id: "asoidjoaisjda",
-      lineanegocio: "I",
-      vehiculo_nombre: "PEUGEOT 208 1.5 5P ALLURE NAV   (RES 2016)",
-      marca_vehiculo: "PEUGEOT",
-    },
-  ],
+  }
 } as const;
 
 export const apiErrorSchema = {
