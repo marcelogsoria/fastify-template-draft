@@ -1,12 +1,9 @@
 import type { FastifySchema } from "fastify";
 
-export const informeSchema = {
+export const informeParaCreacionSchema = {
   type: "object",
   required: ["lineanegocio", "vehiculo_nombre", "marca_vehiculo"],
   properties: {
-    _id: {
-      type: "string",
-    },
     lineanegocio: {
       type: "string",
     },
@@ -16,7 +13,18 @@ export const informeSchema = {
     marca_vehiculo: {
       type: "string",
     },
-  }
+  },
+} as const;
+
+export const informeSchema = {
+  ...informeParaCreacionSchema,
+  required: [...informeParaCreacionSchema.required, "id"],
+  properties: {
+    ...informeParaCreacionSchema.properties,
+    id: {
+      type: "string",
+    },
+  },
 } as const;
 
 export const apiErrorSchema = {
@@ -50,7 +58,7 @@ export const getInformePorIdSchema: FastifySchema = {
 export const crearInformeSchema: FastifySchema = {
   tags: ["Informes"],
   description: "Crea un nuevo informe",
-  body: informeSchema,
+  body: informeParaCreacionSchema,
   response: {
     201: informeSchema,
     400: apiErrorSchema,

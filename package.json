@@ -23,6 +23,7 @@
   "homepage": "https://github.com/marcelogsoria/fastify-template-draft#readme",
   "dependencies": {
     "@fastify/swagger": "^7.4.1",
+    "@types/mongoose": "^5.11.97",
     "fastify": "^4.5.3",
     "fastify-plugin": "^3.0.1",
     "mongoose": "^6.6.0",

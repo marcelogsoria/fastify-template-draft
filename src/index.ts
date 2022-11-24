@@ -1,4 +1,4 @@
-import Server from "./server";
+import Server from "./Presentation/server";
 
 const start = async () => {
   const server = await Server();
