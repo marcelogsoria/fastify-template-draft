@@ -1,9 +1,10 @@
-import type { InformeDTO } from "../../../../Core/Application/Informe/InformeDTO";
-import type { IInformeWriteRepository } from "../../../../Core/Application/Informe/interfaces/IInformeWriteRepository";
-import informeMongooseModel from "./InformeMongooseModel";
+import type { InformeDTO } from "#Core/Application/Informe";
+import type { IInformeWriteRepository } from "#Core/Application/Informe/interfaces";
+import createInformeMongooseModel from "./InformeMongooseModel";
 
 const createInformeWriteMongoService = (): IInformeWriteRepository => {
   const create = async (informe: InformeDTO): Promise<InformeDTO> => {
+    const informeMongooseModel = createInformeMongooseModel();
     const informeEnMongoose = new informeMongooseModel(informe);
 
     await informeEnMongoose.save();
@@ -14,4 +15,4 @@ const createInformeWriteMongoService = (): IInformeWriteRepository => {
     create,
   };
 };
-export { createInformeWriteMongoService };
+export default createInformeWriteMongoService;

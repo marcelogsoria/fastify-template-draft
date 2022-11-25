@@ -1,7 +1,7 @@
-import Server from "./Presentation/server";
+import { createServer } from "./Presentation/server";
 
 const start = async () => {
-  const server = await Server();
+  const server = await createServer();
   await server.ready();
 
   server.listen({ port: 8080 }, (err, address) => {

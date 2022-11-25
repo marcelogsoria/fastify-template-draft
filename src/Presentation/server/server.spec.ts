@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import Server from "./index";
+import { createServer } from "./index";
 
 let server: FastifyInstance;
 
@@ -9,7 +9,7 @@ describe("Server", () => {
   });
 
   it("tiene que devolver una variable definida", async () => {
-    server = await Server();
+    server = await createServer();
     expect(server).toBeDefined();
   });
 });

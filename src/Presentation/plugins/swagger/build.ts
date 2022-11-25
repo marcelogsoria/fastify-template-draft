@@ -1,8 +1,8 @@
-import Server from "../../server";
+import { createServer } from "../../server";
 import fs from "fs";
 const dir = "./docs";
 const start = async () => {
-  const server = await Server();
+  const server = await createServer();
   try {
     await server.ready();
     !fs.existsSync(dir) && fs.mkdirSync(dir);

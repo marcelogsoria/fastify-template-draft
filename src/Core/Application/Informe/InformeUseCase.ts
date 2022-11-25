@@ -1,21 +1,18 @@
-import type { InformeDTO } from "./InformeDTO";
-import type { IInformeReadRepository } from "./interfaces/IInformeReadRepository";
-import type { IInformeWriteRepository } from "./interfaces/IInformeWriteRepository";
+import type {
+  createInformeUseCaseParams,
+  InformeDTO,
+  InformeUseCase,
+} from "./types";
 
-type InformeUseCaseParams = {
-  queryService: IInformeReadRepository;
-  commandService: IInformeWriteRepository;
-};
-
-const InformeUseCase = ({
+const createInformeUseCase = ({
   queryService,
   commandService,
-}: InformeUseCaseParams) => {
+}: createInformeUseCaseParams): InformeUseCase => {
   const _queryService = queryService;
   const _commandService = commandService;
 
   const getById = (id: string): Promise<InformeDTO | undefined> => {
-    return _queryService.getById(id);
+    return _queryService?.getById(id);
   };
 
   const create = (informe: InformeDTO): Promise<InformeDTO> => {
@@ -25,4 +22,4 @@ const InformeUseCase = ({
   return { create, getById };
 };
 
-export default InformeUseCase;
+export default createInformeUseCase;

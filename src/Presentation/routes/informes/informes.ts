@@ -2,11 +2,11 @@ import type { FastifyInstance, FastifyPluginCallback } from "fastify";
 import {
   crearInformeSchema,
   getInformePorIdSchema,
-} from "../../schemas/informes";
+} from "#Presentation/schemas/informes";
 import {
   crearInformeHandler,
   getInformePorIdHandler,
-} from "../../controllers/informes";
+} from "#Presentation/controllers/informes";
 
 const informesRoutes: FastifyPluginCallback = (
   fastify: FastifyInstance,

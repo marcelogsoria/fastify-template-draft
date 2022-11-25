@@ -1,12 +1,7 @@
-import type { InformeDTO } from "./InformeDTO";
-import type { Informe } from "../../DomainModel/Entities/Informe";
+import type { Informe } from "#Core/DomainModel/Entities/Informe";
+import type { InformeDTO, InformeMapper } from "./types";
 
-type InformeMapper = {
-  mapFromDTO: (dto: InformeDTO) => Informe;
-  mapFromEntity: (informe: Informe) => InformeDTO;
-};
-
-const informeMapper: InformeMapper = {
+const createInformeMapper = (): InformeMapper => ({
   mapFromDTO: (dto: InformeDTO): Informe => {
     const informe: Informe = {
       id: dto.id,
@@ -23,7 +18,6 @@ const informeMapper: InformeMapper = {
     vehiculo_nombre: informe.vehiculo_nombre,
     marca_vehiculo: informe.marca_vehiculo,
   }),
-};
+});
 
-export type { InformeMapper };
-export default informeMapper;
+export default createInformeMapper;

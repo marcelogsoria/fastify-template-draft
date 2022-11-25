@@ -1,4 +1,4 @@
-import type { InformeDTO } from "../InformeDTO";
+import type { InformeDTO } from "../types";
 
 type IInformeWriteRepository = {
   create(informe: InformeDTO): Promise<InformeDTO>;

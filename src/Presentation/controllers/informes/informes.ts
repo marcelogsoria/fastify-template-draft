@@ -3,11 +3,11 @@ import type {
   ApiError,
   GetInformePorIdParams,
   Informe,
-} from "../../schemas/informes/types";
-import InformeModel from "../../../Infrastructure/Persistence/ByEntity/Informe/InformeMongooseModel";
-import InformeUseCase from "../../../Core/Application/Informe/InformeUseCase";
-import { createInformeReadMongoService } from "../../../Infrastructure/Persistence/ByEntity/Informe/InformeReadMongoService";
-import { createInformeWriteMongoService } from "../../../Infrastructure/Persistence/ByEntity/Informe/InformeWriteMongoService";
+} from "#Presentation/schemas/informes";
+import { createInformeMongooseModel } from "#Infrastructure/Persistence/ByEntity/Informe";
+import { createInformeUseCase } from "#Core/Application/Informe";
+import { createInformeReadMongoService } from "#Infrastructure/Persistence/ByEntity/Informe";
+import { createInformeWriteMongoService } from "#Infrastructure/Persistence/ByEntity/Informe";
 
 export const getInformePorIdHandler: RouteHandler<{
   Params: GetInformePorIdParams;
@@ -15,7 +15,7 @@ export const getInformePorIdHandler: RouteHandler<{
 }> = async function (req, reply) {
   const queryService = createInformeReadMongoService();
   const commandService = createInformeWriteMongoService();
-  const informeUseCase = InformeUseCase({ queryService, commandService });
+  const informeUseCase = createInformeUseCase({ queryService, commandService });
 
   const informe = await informeUseCase.getById(req.params.id);
 
@@ -30,7 +30,9 @@ export const crearInformeHandler: RouteHandler<{
   Body: Informe;
   Reply: Informe | ApiError;
 }> = async function (req, reply) {
-  const informe = new InformeModel(req.body);
+  //TODO: Reemplazar por UseCase
+  const informeModel = createInformeMongooseModel();
+  const informe = new informeModel(req.body);
 
   await informe.save();
 

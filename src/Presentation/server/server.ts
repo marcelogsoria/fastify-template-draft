@@ -1,9 +1,9 @@
 import fastify, { FastifyInstance } from "fastify";
-import swagger from "../plugins/swagger";
-import { informesRoutes } from "../routes/informes";
-import initMongoose from "../../Infrastructure/Persistence/Mongoose/mongoose";
+import swagger from "#Presentation/plugins/swagger";
+import { informesRoutes } from "#Presentation/routes/informes";
+import { initMongoose } from "#Infrastructure/Persistence/Mongoose";
 
-const Server = async (): Promise<FastifyInstance> => {
+const createServer = async (): Promise<FastifyInstance> => {
   const server = fastify();
 
   await server.register(swagger);
@@ -13,4 +13,4 @@ const Server = async (): Promise<FastifyInstance> => {
   return server;
 };
 
-export default Server;
+export { createServer };

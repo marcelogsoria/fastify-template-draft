@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "build-swagger": "node dist/plugins/swagger/build.js",
     "build": "tsc -p tsconfig.json",
     "watch": "tsc -w -p tsconfig.json",
     "start": "nodemon dist/index.js",
     "swagger": "npm run build-swagger && redoc-cli build docs/swagger.json --output docs/data-api.html"
+  },
+  "imports": {
+    "#Core/*": "./dist/Core/*/index.js",
+    "#Infrastructure/*": "./dist/Infrastructure/*/index.js",
+    "#Presentation/*": "./dist/Presentation/*/index.js"
   },
   "repository": {
     "type": "git",

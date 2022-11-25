@@ -6,11 +6,18 @@ import type {
   informeParaCreacionSchema,
 } from "./informes";
 
-export type ApiError = FromSchema<typeof apiErrorSchema>;
+type ApiError = FromSchema<typeof apiErrorSchema>;
 
-export type GetInformePorIdParams = FromSchema<
-  typeof getInformePorIdParamsSchema
+type GetInformePorIdParams = FromSchema<typeof getInformePorIdParamsSchema>;
+
+type InformeFromSchema = FromSchema<typeof informeSchema>;
+type InformeParaCreacionFromSchema = FromSchema<
+  typeof informeParaCreacionSchema
 >;
 
-export type Informe = FromSchema<typeof informeSchema>;
-export type InformeParaCreacion = FromSchema<typeof informeParaCreacionSchema>;
+export type {
+  ApiError,
+  GetInformePorIdParams,
+  InformeFromSchema as Informe,
+  InformeParaCreacionFromSchema as InformeParaCreacion,
+};

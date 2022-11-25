@@ -1,6 +1,9 @@
 import { model } from "mongoose";
-import { informeMongooseSchema } from "./InformeMongooseSchema";
+import createInformeMongooseSchema from "./InformeMongooseSchema";
 
-const informeMongooseModel = model("informe", informeMongooseSchema);
+const informeMongooseSchema = createInformeMongooseSchema();
 
-export default informeMongooseModel;
+const createInformeMongooseModel = () =>
+  model("informe", informeMongooseSchema);
+
+export default createInformeMongooseModel;
